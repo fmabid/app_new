@@ -27,8 +27,8 @@ const mathReducer = (state = {
 };
 
 const userReducer = (state = {
-  name : "Pranto -->",
-  age: 22
+  name: "Max",
+  age: 27
 }, action) => {
   switch (action.type) {
     case "SET_NAME":
@@ -44,22 +44,11 @@ const userReducer = (state = {
       };
       break;
   }
-  return state
+  return state;
 };
 
 const store = createStore(combineReducers({math: mathReducer, user: userReducer}), {}, applyMiddleware(logger));
 
-
-const myLogger = (store) => (next) => (action) => {
-  console.log("Logged Action: ", action);
-  next(action);
-};
-
-
-
-store.subscribe(() => {
-  // console.log("Store updated!", store.getState());
-});
 
 ReactDOM.render(
     <Provider store = {store}>

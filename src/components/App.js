@@ -10,7 +10,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Main changeUsername={() => this.props.setName("Anna")}/>
+        <Main changeUsername={() => this.props.setName("Abid")}/>
         <User username={this.props.user.name}/>
       </div>
     );
@@ -18,19 +18,19 @@ class App extends Component {
 }
 
 
-const mapStateToProps  = (state) => {
-  return{
+const mapStateToProps = (state) => {
+  return {
     user: state.user,
     math: state.math
-  }
+  };
 };
 
-const mapDispatchToProps  = (dispatch) => {
-  return{
+const mapDispatchToProps = (dispatch) => {
+  return {
     setName: (name) => {
       dispatch({
         type: "SET_NAME",
-        Payload: name
+        payload: name
       });
     }
   };
