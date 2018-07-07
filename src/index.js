@@ -47,7 +47,19 @@ const userReducer = (state = {
   return state
 };
 
-const store = createStore(combineReducers({math: mathReducer, user: userReducer}, {}, applyMiddleware(logger)));
+const store = createStore(combineReducers({math: mathReducer, user: userReducer}), {}, applyMiddleware(logger));
+
+
+const myLogger = (store) => (next) => (action) => {
+  console.log("Logged Action: ", action);
+  next(action);
+};
+
+
+
+store.subscribe(() => {
+  // console.log("Store updated!", store.getState());
+});
 
 ReactDOM.render(
     <Provider store = {store}>
